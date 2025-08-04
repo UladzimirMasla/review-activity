@@ -1,0 +1,31 @@
+name: Generate GitHub Review Report
+
+on:
+  # Manual trigger from GitHub UI
+  workflow_dispatch:
+
+jobs:
+  review-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore ReviewActivity/ReviewActivity.sln
+
+      - name: Build project
+        run: dotnet build ReviewActivity/ReviewActivity.sln --configuration Release
+
+      - name: Run app with inputs as env vars
+        run: dotnet run --project ReviewActivity/ReviewActivity/ReviewActivity.csproj
+        env:
+          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+          REPOSITORY: ${{ vars.REPOSITORY }}
+          OWNER: ${{ vars.OWNER }}
