@@ -15,48 +15,33 @@ var httpClient = new HttpClient();
 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("token", ghToken);
 httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("MAS Github Review Activity Script");
 
-var since = DateTime.UtcNow.AddDays(-7); // Last 7 days
-var reviewsCount = new Dictionary<string, int>();
-
 Console.WriteLine($"Fetching PRs for repository: {repo}");
-
-var prsUrl = $"https://api.github.com/repos/{owner}/{repo}/pulls?state=open&per_page=100";
+var prsUrl = $"https://api.github.com/repos/{owner}/{repo}/pulls";
 var prsResponse = await httpClient.GetAsync(prsUrl);
 prsResponse.EnsureSuccessStatusCode();
 
 var prsJson = await prsResponse.Content.ReadAsStringAsync();
 var prs = JsonSerializer.Deserialize<List<PullRequest>>(prsJson)!;
 
+var allReviews = new List<Review>();
+var since = DateTime.UtcNow.AddMonths(-1);
 foreach (var pr in prs)
 {
-    // reviews are for final review result from the reviewers
-    // comments endpoint for all comments
     var reviewsUrl = $"https://api.github.com/repos/{owner}/{repo}/pulls/{pr.Number}/reviews";
     var reviewsResponse = await httpClient.GetAsync(reviewsUrl);
     if (!reviewsResponse.IsSuccessStatusCode) continue;
 
     var reviewsJson = await reviewsResponse.Content.ReadAsStringAsync();
     var reviews = JsonSerializer.Deserialize<List<Review>>(reviewsJson)!;
-
-    foreach (var review in reviews)
-    {
-        if (DateTime.TryParse(review.SubmittedAt, out var submittedAt) && submittedAt > since)
-        {
-            if (reviewsCount.ContainsKey(review.User.Login))
-                reviewsCount[review.User.Login]++;
-            else
-                reviewsCount[review.User.Login] = 1;
-        }
-    }
+    allReviews.AddRange(reviews.Where(review => review.SubmittedAt != null && review.SubmittedAt >= since));
 }
 
-var sorted = reviewsCount.OrderByDescending(kv => kv.Value).ToList();
-var md = new StringBuilder();
-md.AppendLine("| Reviewer | Reviews |");
-md.AppendLine("|----------|---------|");
+var allReviewsJson = JsonSerializer.Serialize(allReviews, new JsonSerializerOptions { WriteIndented = true });
+Directory.CreateDirectory(Path.Combine(GetBaseFullPath(), "output"));
+File.WriteAllText(Path.Combine(GetBaseFullPath(), "output/reviews.json"), allReviewsJson);
 
-foreach (var (user, count) in sorted)
-    md.AppendLine($"| {user} | {count} |");
 
-Console.Write(md.ToString());
-Console.WriteLine("Report generated successfully.");
+string GetBaseFullPath()
+{
+    return Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", ".."));
+}

@@ -29,3 +29,10 @@ jobs:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
           REPOSITORY: ${{ vars.REPOSITORY }}
           OWNER: ${{ vars.OWNER }}
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ReviewActivity/output
+          force_orphan: true  # overwrites history

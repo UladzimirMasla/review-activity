@@ -8,8 +8,11 @@ public class Review
     public User User { get; set; } = default!;
 
     [JsonPropertyName("submitted_at")]
-    public string SubmittedAt { get; set; } = "";
+    public DateTimeOffset? SubmittedAt { get; set; } = null;
 
     [JsonPropertyName("state")]
     public string State { get; set; } = "";
+
+    [JsonPropertyName("html_url")]
+    public string HtmlUrl { get; set; } = "";
 }
