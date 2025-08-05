@@ -37,11 +37,11 @@ foreach (var pr in prs)
 }
 
 var allReviewsJson = JsonSerializer.Serialize(allReviews, new JsonSerializerOptions { WriteIndented = true });
-Directory.CreateDirectory(Path.Combine(GetBaseFullPath(), "output"));
-File.WriteAllText(Path.Combine(GetBaseFullPath(), "output/reviews.json"), allReviewsJson);
+Directory.CreateDirectory(Path.Combine(GetRepoRootFullPath(), "gh-pages"));
+File.WriteAllText(Path.Combine(GetRepoRootFullPath(), "gh-pages/reviews.json"), allReviewsJson);
 
 
-string GetBaseFullPath()
+string GetRepoRootFullPath()
 {
-    return Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", ".."));
+    return Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", ".."));
 }
