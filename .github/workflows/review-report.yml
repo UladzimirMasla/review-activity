@@ -23,16 +23,29 @@ jobs:
       - name: Build project
         run: dotnet build ReviewActivity/ReviewActivity.sln --configuration Release
 
-      - name: Run app with inputs as env vars
+      - name: Run script to generate reviews file
         run: dotnet run --project ReviewActivity/ReviewActivity/ReviewActivity.csproj
         env:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
           REPOSITORY: ${{ vars.REPOSITORY }}
           OWNER: ${{ vars.OWNER }}
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install frontend dependencies
+        run: npm ci
+        working-directory: gh-pages/review-activity
+
+      - name: Build frontend
+        run: npm run build # for now with test data, change to 'npm run build-production' when done with dev
+        working-directory: gh-pages/review-activity
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: gh-pages
+          publish_dir: gh-pages/review-activity/dist
           force_orphan: true  # overwrites history

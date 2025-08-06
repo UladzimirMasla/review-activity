@@ -1,7 +1,6 @@
 ﻿using System.Net.Http.Headers;
-using System.Text;
 using System.Text.Json;
-using ReviewActivity.Models;
+using ReviewActivity.Data;
 
 const string githubTokenEnvKey = "API_GITHUB_TOKEN";
 const string repositoryEnvKey = "REPOSITORY";
@@ -41,7 +40,7 @@ Directory.CreateDirectory(Path.Combine(GetRepoRootFullPath(), "gh-pages"));
 File.WriteAllText(Path.Combine(GetRepoRootFullPath(), "gh-pages/reviews.json"), allReviewsJson);
 
 
-string GetRepoRootFullPath()
+static string GetRepoRootFullPath()
 {
     return Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", ".."));
 }

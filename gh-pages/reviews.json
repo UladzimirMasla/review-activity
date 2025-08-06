@@ -1,0 +1,52 @@
+[
+  {
+    "user": {
+      "login": "UladzimirMasla",
+      "url": "https://api.github.com/users/UladzimirMasla",
+      "avatar_url": "https://avatars.githubusercontent.com/u/117262195?v=4"
+    },
+    "submitted_at": "2025-08-01T08:21:20+00:00",
+    "state": "COMMENTED",
+    "html_url": "https://github.com/UladzimirMasla/review-playground/pull/2#pullrequestreview-3078211823"
+  },
+  {
+    "user": {
+      "login": "maryuraeva",
+      "url": "https://api.github.com/users/maryuraeva",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17637754?u=b456e9275dff3d3f09ccbc2f6bfd6a94dc3a0768\u0026v=4"
+    },
+    "submitted_at": "2025-08-04T09:49:37+00:00",
+    "state": "COMMENTED",
+    "html_url": "https://github.com/UladzimirMasla/review-playground/pull/2#pullrequestreview-3083455147"
+  },
+  {
+    "user": {
+      "login": "aprusova2025",
+      "url": "https://api.github.com/users/aprusova2025",
+      "avatar_url": "https://avatars.githubusercontent.com/u/201594510?v=4"
+    },
+    "submitted_at": "2025-08-04T10:57:30+00:00",
+    "state": "CHANGES_REQUESTED",
+    "html_url": "https://github.com/UladzimirMasla/review-playground/pull/2#pullrequestreview-3083675902"
+  },
+  {
+    "user": {
+      "login": "maryuraeva",
+      "url": "https://api.github.com/users/maryuraeva",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17637754?u=b456e9275dff3d3f09ccbc2f6bfd6a94dc3a0768\u0026v=4"
+    },
+    "submitted_at": "2025-08-04T09:49:42+00:00",
+    "state": "APPROVED",
+    "html_url": "https://github.com/UladzimirMasla/review-playground/pull/1#pullrequestreview-3083456435"
+  },
+  {
+    "user": {
+      "login": "aprusova2025",
+      "url": "https://api.github.com/users/aprusova2025",
+      "avatar_url": "https://avatars.githubusercontent.com/u/201594510?v=4"
+    },
+    "submitted_at": "2025-08-04T10:56:53+00:00",
+    "state": "CHANGES_REQUESTED",
+    "html_url": "https://github.com/UladzimirMasla/review-playground/pull/1#pullrequestreview-3083674145"
+  }
+]
