@@ -8,6 +8,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Bogus" Version="35.6.3" />
+    </ItemGroup>
+
+    <ItemGroup>
       <ProjectReference Include="..\ReviewActivity.Data\ReviewActivity.Data.csproj" />
     </ItemGroup>
 

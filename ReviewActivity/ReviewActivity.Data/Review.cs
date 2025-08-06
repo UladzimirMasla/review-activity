@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace ReviewActivity.Models;
+namespace ReviewActivity.Data;
 
 public class Review
 {
