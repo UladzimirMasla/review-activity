@@ -1,0 +1,15 @@
+/*  */
+
+
+.UserList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 10px;
+  justify-content: center;
+
+    & > * {
+        flex: 1 1 400px; /* grow/shrink, min width 200px */
+    }
+}
