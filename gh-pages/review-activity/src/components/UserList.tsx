@@ -30,7 +30,7 @@ function UserList({ reviews }: { reviews: Review[] }) {
 
   return (
     <div className="UserList">
-      {userToReviews.map(({ user, reviews, reviewsCount, userPosition }) => (
+      {userToReviews.map(({ user, reviews, userPosition }) => (
         <UserCard key={user.login} user={user} userReviews={reviews} userPosition={userPosition} />
       ))}
     </div>
