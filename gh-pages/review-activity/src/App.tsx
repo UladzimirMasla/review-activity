@@ -1,8 +1,8 @@
-import ReviewChart from './ReviewChart';
 import { useState, useEffect } from 'react'
-import type Review from './models/review';
-import ReviewsList from './UserList';
-import './App.css';
+import type Review from 'models/review';
+import UserList from 'components/UserList';
+import ReviewChart from 'components/ReviewChart';
+import './App.scss';
 
 function App() {
     const [reviews, setReviews] = useState<Review[]>([]);
@@ -15,11 +15,10 @@ function App() {
 
   return (
     <div className='App'>
-      <h1>Reviews</h1>
-      <ReviewChart reviews={reviews} className='ReviewChart'/>
-      <br/>
+      <h1>Review results from past month</h1>
+      <ReviewChart reviews={reviews}/>
       <div>
-        <ReviewsList reviews={reviews} />
+        <UserList reviews={reviews} />
       </div>
     </div>
   );

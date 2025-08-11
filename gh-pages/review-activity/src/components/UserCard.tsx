@@ -1,14 +1,22 @@
 import type Review from "models/review";
 import type User from "models/user";
 import { useMemo } from "react";
+import Badge from '@mui/material/Badge';
 import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from "@mui/material/CardMedia";
+import Avatar from '@mui/material/Avatar';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 
-function UserCard({ user, userReviews }: { user: User, userReviews: Review[] }) {
+interface UserCardProps {
+  user: User;
+  userReviews: Review[];
+  userPosition: number;
+}
+
+function UserCard({ user, userReviews, userPosition }: UserCardProps) {
 
   var reviewStateToReviews: Record<string, Review[]> = useMemo(() => {
     const stateToReviews: Record<string, Review[]> = {};
@@ -24,13 +32,13 @@ function UserCard({ user, userReviews }: { user: User, userReviews: Review[] }) 
   return (
     <Card className="UserCard" variant="outlined">
       <CardContent>
-        <h3>{user.login}</h3>
-        <CardMedia
-          component="img"
-          image={user.avatar_url}
-          style={{ width: 64, height: 64, objectFit: 'cover', borderRadius: '50%' }}
-          alt={`${user.login}'s avatar`}
+        <CardHeader
+          avatar={RenderAvatarContent(user, userPosition)}
+          title={user.login}
         />
+        <div>
+          <h4>Review Count: {userReviews.length}</h4>
+        </div>
         {Object.entries(reviewStateToReviews).map(([state, reviews]) => (
           <Accordion key={state}>
             <AccordionSummary>
@@ -48,6 +56,33 @@ function UserCard({ user, userReviews }: { user: User, userReviews: Review[] }) 
         ))}
       </CardContent>
     </Card>
+  );
+}
+
+function RenderAvatarContent(user: User, userPosition: number){
+  if(userPosition < 4)
+  {
+    return (
+      <Badge
+          overlap="circular"
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+          badgeContent={
+            <Avatar src={`./crowns/${userPosition}.svg`} />
+          }
+        >
+          <Avatar
+            alt={`${user.login}'s avatar`}
+            src={user.avatar_url}
+          />
+      </Badge>
+    );
+  }
+
+  return(
+    <Avatar
+        alt={`${user.login}'s avatar`}
+        src={user.avatar_url}
+    />
   );
 }
 

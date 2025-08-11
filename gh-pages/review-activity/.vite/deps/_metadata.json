@@ -1,0 +1,94 @@
+{
+  "hash": "b077f347",
+  "configHash": "7555f8c0",
+  "lockfileHash": "4ce76bd5",
+  "browserHash": "ac44836f",
+  "optimized": {
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "09f9ef5a",
+      "needsInterop": true
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "72fe7eb5",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "3c7e03ce",
+      "needsInterop": true
+    },
+    "recharts": {
+      "src": "../../node_modules/recharts/es6/index.js",
+      "file": "recharts.js",
+      "fileHash": "7ddebe44",
+      "needsInterop": false
+    },
+    "@mui/material/Card": {
+      "src": "../../node_modules/@mui/material/esm/Card/index.js",
+      "file": "@mui_material_Card.js",
+      "fileHash": "ddd86661",
+      "needsInterop": false
+    },
+    "@mui/material/CardContent": {
+      "src": "../../node_modules/@mui/material/esm/CardContent/index.js",
+      "file": "@mui_material_CardContent.js",
+      "fileHash": "01cb45b0",
+      "needsInterop": false
+    },
+    "@mui/material/CardMedia": {
+      "src": "../../node_modules/@mui/material/esm/CardMedia/index.js",
+      "file": "@mui_material_CardMedia.js",
+      "fileHash": "1d98cb1a",
+      "needsInterop": false
+    },
+    "@mui/material/Accordion": {
+      "src": "../../node_modules/@mui/material/esm/Accordion/index.js",
+      "file": "@mui_material_Accordion.js",
+      "fileHash": "26c885f9",
+      "needsInterop": false
+    },
+    "@mui/material/AccordionSummary": {
+      "src": "../../node_modules/@mui/material/esm/AccordionSummary/index.js",
+      "file": "@mui_material_AccordionSummary.js",
+      "fileHash": "6513e6fa",
+      "needsInterop": false
+    },
+    "@mui/material/AccordionDetails": {
+      "src": "../../node_modules/@mui/material/esm/AccordionDetails/index.js",
+      "file": "@mui_material_AccordionDetails.js",
+      "fileHash": "86169f05",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-7ZDRGQKA": {
+      "file": "chunk-7ZDRGQKA.js"
+    },
+    "chunk-JJSCUBFW": {
+      "file": "chunk-JJSCUBFW.js"
+    },
+    "chunk-LY6TRLOQ": {
+      "file": "chunk-LY6TRLOQ.js"
+    },
+    "chunk-CUYSAGFD": {
+      "file": "chunk-CUYSAGFD.js"
+    },
+    "chunk-JX37XSKT": {
+      "file": "chunk-JX37XSKT.js"
+    },
+    "chunk-JRVJ6NRM": {
+      "file": "chunk-JRVJ6NRM.js"
+    },
+    "chunk-O34D4QBM": {
+      "file": "chunk-O34D4QBM.js"
+    },
+    "chunk-H3AANLML": {
+      "file": "chunk-H3AANLML.js"
+    }
+  }
+}
